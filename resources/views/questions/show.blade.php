@@ -7,14 +7,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                    <div class="d-flex align-items-center">
-                        <h2>{{ $question->title }}</h2>
-                        <div class="ml-auto">
-                            <a href="{{ route('questions.index') }}" class="btn btn-outline-secondary">Back to all question</a>
+                        <div class="d-flex align-items-center">
+                            <h2>{{ $question->title }}</h2>
+                            <div class="ml-auto">
+                                <a href="{{ route('questions.index') }}" class="btn btn-outline-secondary">Back to all question</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <hr> 
                 <div class="media">
                     @include('shared._vote',[
                         'model'     =>  $question,
@@ -33,7 +33,7 @@
                         </div>
                    </div>
                 </div>
-                </div>
+                
             </div>
         </div>
     </div>

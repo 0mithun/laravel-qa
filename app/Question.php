@@ -20,6 +20,10 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class)->orderBy('votes_count','DESC');
+    }
 
     public function setTitleAttribute($value)
     {
@@ -60,10 +64,6 @@ class Question extends Model
     }
 
 
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
-    }
 
     public function acceptBestAnswer(Answer $answer)
     {

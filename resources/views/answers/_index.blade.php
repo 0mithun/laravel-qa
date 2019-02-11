@@ -1,3 +1,5 @@
+@if ($answersCount > 0)
+
 <div class="row justify-content-center mt-5">
     <div class="col-md-12">
         <div class="card">
@@ -5,19 +7,12 @@
                 <div class="card-title">
                     <h2>{{ $answersCount." ".str_plural('Answer', $answersCount) }}</h2>
                     <hr>
-
                     @include ('layouts._messages')
                     @foreach ($answers as $answer)
                             <div class="media">
                                 @include('shared._vote',[
                                     'model' => $answer
                                 ])
-
-                                
-                                {{-- @include('shared._accept',[
-                                    'model' => $answer
-                                ]) --}}
-
                             </div>
                             <div class="media-body">
                                 {!! $answer->body_html !!}
@@ -53,3 +48,4 @@
         </div>
     </div>
 </div>
+@endif
