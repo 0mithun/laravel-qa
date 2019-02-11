@@ -18,7 +18,7 @@
                     @include ('layouts._messages')
                     
                     @forelse ($questions as $question)
-                        <div class="media">
+                        <div class="media post">
                             <div class="d-flex flex-column counters">
                                 <div class="vote">
                                     <strong>{{ $question->votes_count }}</strong>  {{ str_plural('vote', $question->votes_count) }}
@@ -56,7 +56,6 @@
                                 <div class="excerpt"> {{ $question->excerpt(350) }}</div>
                             </div>
                         </div>
-                        <hr>
                     @empty
                         <div class="alert alert-warning">
                             <strong>Sorry</strong> There are no question available.
