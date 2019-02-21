@@ -36,8 +36,6 @@
 
 
     @elseif($model instanceOf App\Answer)
-        @include('shared._accept', [
-            'model' =>  $model
-        ])
+        <accept :answer="{{ $model }}"></accept>
     @endif
 </div> 
