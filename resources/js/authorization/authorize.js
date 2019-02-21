@@ -9,6 +9,6 @@ export default{
                 return policies[policy](user, model);
             }
         };
-        Vue.prototype.signedIn = window.Auth.signedIn;
+        Vue.prototype.signedIn = window.Auth.signedIn; 
     }
 }
