@@ -14,8 +14,7 @@
                                 <div class="invalid-feedback">
                                     <strong>{{ $errors->first('body') }}</strong>
                                 </div>                                
-                            @endif
-                            
+                            @endif                            
                         </div>
                         <div class="form-group">
                            <button type="submit" class="btn btn-outline-primary">Submit Answer</button>
