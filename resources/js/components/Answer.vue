@@ -37,8 +37,14 @@
 </template>
 
 <script>
+    import Vote from './Vote.vue';
+    import UserInfo from './UserInfo.vue';
     export default{
         props: ['answer'],
+        components:{
+            Vote,
+            UserInfo
+        },
         data(){
             return {
                 editing: false,
@@ -79,10 +85,6 @@
                     axios.delete(this.endpoint)
                     .then(res=>{
                         this.$emit('deleted');
-                        // $(this.$el).fadeOut(500, ()=>{
-                        //     this.$toast.success(res.data.message, 'Success', {timeout:3000});
-                        //     // alert(res.data.message);
-                        // });
                     });
                 }
             }
