@@ -39,15 +39,16 @@
 <script>
     import Vote from './Vote.vue';
     import UserInfo from './UserInfo.vue';
+    import modification from '../mixins/modification'
     export default{
         props: ['answer'],
+        mixins: [modification],
         components:{
             Vote,
             UserInfo
         },
         data(){
             return {
-                editing: false,
                 body: this.answer.body,
                 bodyHtml: this.answer.body_html,
                 id: this.answer.id,
@@ -57,37 +58,27 @@
             }
         },
         methods: {
-            edit(){
+            setEditCache(){
                 this.beforeEditCache = this.body;
-                this.editing = true;
-
             },
-            cancel(){
+            restoreFromCache(){
                 this.body = this.beforeEditCache;
-                this.editing = false
             },
             
-            update(){
-                axios.patch(this.endpoint,{
+            payload(){
+                return {
                     body: this.body
-                }).then(res =>{
-                    this.editing=false
-                    this.bodyHtml = res.data.body_html
-                    this.$toast.success(res.data.message, 'Success', {timeout:3000});
-                    // alert(res.data.message)
-                }).catch(err =>{
-                    this.$toast.success(res.data.message, 'Error', {timeout:3000});
-                    // alert(err.response.data.message);
+                };
+            },
+            
+            delete(){
+                axios.delete(this.endpoint)
+                .then(res=>{
+                    this.$toast.success(res.data.message,"Success",{timeout:2000});
+                    this.$emit('deleted');
                 });
             },
-            destroy(){
-                if(confirm('Are you sure?')){
-                    axios.delete(this.endpoint)
-                    .then(res=>{
-                        this.$emit('deleted');
-                    });
-                }
-            }
+            
             
         },
         computed:{
